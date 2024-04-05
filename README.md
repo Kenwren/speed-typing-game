@@ -10,7 +10,7 @@ This is a speed typing game designed to test and improve a player's typing speed
 - **Play**: A random word will generate and you have to type that word in order to get points.
 
 ## Usage for the app
-1. Click here to open the Movie Finder [here](https://kenwren.github.io/speed-typing-game/) application.
+1. Click here to open the game [here](https://kenwren.github.io/speed-typing-game/) application.
 2. Start typing.
 3. Playing this will help improve your hand coordinates and critical thinking. 
 4. Have fun!
