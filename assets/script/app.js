@@ -69,7 +69,7 @@ const soundGameOver = new Audio('./assets/audio/over.mp3');
 /* Function: Set Initial Values                                                   */
 /*--------------------------------------------------------------------------------*/
 function setValues() {
-    secondsCounter = 99;
+    secondsCounter = 15;
     hitsCounter = 0;
     ave = 0;
     userWon = false;
@@ -415,7 +415,7 @@ function saveScore() {
     //Set new Score in Local Storage
     localStorage.setItem('boardScore', JSON.stringify(arraySorted));
 }
-
+// to score keep for the top 10s 
 function getSortArray(arr) {
     arr.sort((a, b) => {
         // Comparing by hits 
@@ -441,17 +441,24 @@ function printScore() {
 
     if (storedBoardScore !== null && storedBoardScore !== undefined) {
         const scoreArray = JSON.parse(storedBoardScore);
-        rows = scoreArray.length;
+        
+        // Sort the scoreArray
+        const sortedScores = scoreArray.sort((a, b) => b.hits - a.hits);
+
+        // Slice the top 10 scores or less if there are fewer than 10 scores
+        const topScores = sortedScores.slice(0, 10);
+
+        rows = topScores.length;
 
         // Setting rows
         gridContainer.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
 
         // Adding the scores 
-        if (scoreArray.length > 0) {
-            for (let i = 0; i < scoreArray.length; i++) {
+        if (topScores.length > 0) {
+            for (let i = 0; i < topScores.length; i++) {
                 const scoreItem = document.createElement("p");
                 scoreItem.classList.add('score-info');
-                scoreItem.innerHTML = `${(i + 1).toString().padStart(2, '0')} | ${scoreArray[i].date} | hits: ${scoreArray[i].hits}`;
+                scoreItem.innerHTML = `${(i + 1).toString().padStart(2, '0')} | ${topScores[i].date} | hits: ${topScores[i].hits}`;
                 gridContainer.appendChild(scoreItem);
             }
         } else {
