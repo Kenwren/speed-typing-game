@@ -15,3 +15,5 @@ This is a speed typing game designed to test and improve a player's typing speed
 3. Playing this will help improve your hand coordinates and critical thinking. 
 4. Have fun!
 
+## updates
+I've updated the game core mechanics making the timer to 15 seconds and the leaderboards, [here](https://kenwren.github.io/speed-typing/)
